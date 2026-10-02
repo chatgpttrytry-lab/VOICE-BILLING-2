@@ -5825,6 +5825,12 @@ function billingVoiceCreateRecognition(SR,lang){
     input.dataset.voiceAlternatives=JSON.stringify(alternatives);
     billingBarcodePendingNotFound='';
     try{renderBillingSearch();}catch(err){console.error('Billing voice search render',err);}
+    // Voice Billing is an action: a clear product match is added immediately,
+    // then addDBItemToBilling clears and refocuses the search box for the next item.
+    if(billingVoiceAutoAdd(text)){
+      billingVoiceSetStatus('✓ Added: '+text+' • Ready for next item');
+      return;
+    }
     try{input.focus({preventScroll:true});}catch(err){try{input.focus();}catch(_) {}}
     billingVoiceSetStatus('✓ Voice: '+text);
   };
@@ -5929,11 +5935,25 @@ function billingVoiceCompact(v){return billingVoiceNormalize(v).replace(/[^a-z0-
 function billingVoiceTokens(v){return billingVoiceNormalize(v).split(/\s+/).filter(Boolean);}
 function billingVoiceAliases(v){
   let s=billingVoiceNormalize(v);
-  // Only safe speech aliases belong here. Never map Lux -> Locks (or the
-  // reverse): both can be real Item Database names and must remain distinct.
-  // The original Item Database name is never rewritten.
+  // Speech-only equivalences. These NEVER modify the Item Database name.
+  // They are used only for matching recognition variants to the stored name.
   s=s.replace(/\bmamy\b/g,'mummy');
+  s=s.replace(/\bmummy\b/g,'mamy');
+  s=s.replace(/\blocks\b/g,'lux');
+  s=s.replace(/\bglow\b/g,'blue');
   return s;
+}
+function billingVoiceSpeechVariants(v){
+  const base=billingVoiceNormalize(v), out=[];
+  const add=x=>{x=String(x||'').trim();if(x&&!out.some(y=>y===x))out.push(x)};
+  add(base);
+  add(base.replace(/\bmummy\b/g,'mamy'));
+  add(base.replace(/\bmamy\b/g,'mummy'));
+  add(base.replace(/\blocks\b/g,'lux'));
+  add(base.replace(/\blux\b/g,'locks'));
+  add(base.replace(/\bblue\b/g,'glow'));
+  add(base.replace(/\bglow\b/g,'blue'));
+  return out;
 }
 function billingVoiceQuantityWordValue(v){
   const w=String(v||'').trim().toLowerCase();
@@ -5962,10 +5982,20 @@ function billingVoiceExtractQuantity(v){
 }
 function billingVoiceMatchScore(productName,query){
   const pn=billingVoiceNormalize(productName), qn=billingVoiceNormalize(query);
-  const pa=billingVoiceAliases(productName), qa=billingVoiceAliases(billingVoiceExtractQuantity(query).text);
+  const rawQ=billingVoiceExtractQuantity(query).text;
+  const pa=billingVoiceNormalize(productName), qa=billingVoiceNormalize(rawQ);
   const pc=billingVoiceCompact(pa), qc=billingVoiceCompact(qa);
+  // Exact stored spelling always wins. Speech aliases are a fallback only.
+  if(pc===qc)return 12000;
+  const aliasQueries=billingVoiceSpeechVariants(rawQ).filter(x=>billingVoiceCompact(x)!==qc);
+  let aliasBest=0;
+  for(const aq of aliasQueries){
+    const ap=billingVoiceAliases(productName), ac=billingVoiceCompact(ap), aqa=billingVoiceAliases(aq), aqc=billingVoiceCompact(aqa);
+    if(ac&&aqc&&ac===aqc)aliasBest=Math.max(aliasBest,10800);
+    else if(ac&&aqc&&ac.startsWith(aqc))aliasBest=Math.max(aliasBest,820);
+  }
   if(!pc||!qc)return 0;
-  if(pc===qc)return 10000; // strongest: exact normalized identity, including SKU digits
+  if(aliasBest>=10800)return aliasBest;
   const pt=pa.split(/\s+/).filter(Boolean), qt=qa.split(/\s+/).filter(Boolean);
   const pSet=new Set(pt), qSet=new Set(qt);
   const common=qt.filter(t=>pSet.has(t)).length;
@@ -5987,7 +6017,7 @@ function billingVoiceMatchScore(productName,query){
   if(qNums.length && pNums.length && qNums.join('')!==pNums.join(''))score-=5000;
   if(pa===qa)score+=3000;
   if(pa.startsWith(qa))score+=700;
-  return score;
+  return Math.max(score,aliasBest);
 }
 function billingVoiceGetQueries(raw){
   const out=[String(raw||'').trim()];
@@ -5997,6 +6027,25 @@ function billingVoiceGetQueries(raw){
   }catch(_){}
   return out;
 }
+function billingVoiceAutoAdd(raw){
+  const input=document.getElementById('billing-search');
+  if(!input || String(input.value||'').trim()!==String(raw||'').trim())return false;
+  const voiceQty=billingVoiceExtractQuantity(raw);
+  const q=billingVoiceNormalize(voiceQty.text);
+  if(!q)return false;
+  const db=getItemDB();
+  let best=null;
+  for(const x of db){
+    const exact=billingVoiceCompact(x.name)===billingVoiceCompact(voiceQty.text);
+    const score=billingVoiceMatchScore(x.name,voiceQty.text);
+    if(!best || score>best.score)best={x,score,exact};
+  }
+  // Auto-add only when identity is clear; ordinary typed search is untouched.
+  if(!best || (!best.exact && best.score<10800))return false;
+  addDBItemToBilling(best.x.id,voiceQty.qty);
+  return true;
+}
+
 function renderBillingSearch(){
   const box=document.getElementById("billing-search-results"); if(!box)return;
   const input=document.getElementById("billing-search");
