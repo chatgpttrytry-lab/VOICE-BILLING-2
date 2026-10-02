@@ -5901,14 +5901,25 @@ function billingVoiceCompact(v){return billingVoiceNormalize(v).replace(/[^a-z0-
 function billingVoiceTokens(v){return billingVoiceNormalize(v).split(/\s+/).filter(Boolean);}
 function billingVoiceAliases(v){
   let s=billingVoiceNormalize(v);
-  // Common Indian speech recognition spellings. These are matching aliases only;
-  // the original Item Database name remains untouched.
-  s=s.replace(/\bmamy\b/g,'mummy').replace(/\blocks\b/g,'lux');
+  // Only safe speech aliases belong here. Never map Lux -> Locks (or the
+  // reverse): both can be real Item Database names and must remain distinct.
+  // The original Item Database name is never rewritten.
+  s=s.replace(/\bmamy\b/g,'mummy');
   return s;
+}
+function billingVoiceExtractQuantity(v){
+  const raw=billingVoiceCleanText(v);
+  // A trailing "2pc", "2 pcs", "2 pieces", or "quantity 2" is
+  // quantity, not part of the product SKU. Keep product numbers such as 90.
+  const m=raw.match(/(?:\b(?:qty|quantity)\s*)?(\d+)\s*(?:pcs?|pieces?|piece)\s*$/i);
+  if(m) return {text:raw.slice(0,m.index).trim(),qty:Math.max(1,parseInt(m[1],10)||1)};
+  const q=raw.match(/\b(?:qty|quantity)\s+(\d+)\s*$/i);
+  if(q) return {text:raw.slice(0,q.index).trim(),qty:Math.max(1,parseInt(q[1],10)||1)};
+  return {text:raw,qty:1};
 }
 function billingVoiceMatchScore(productName,query){
   const pn=billingVoiceNormalize(productName), qn=billingVoiceNormalize(query);
-  const pa=billingVoiceAliases(productName), qa=billingVoiceAliases(query);
+  const pa=billingVoiceAliases(productName), qa=billingVoiceAliases(billingVoiceExtractQuantity(query).text);
   const pc=billingVoiceCompact(pa), qc=billingVoiceCompact(qa);
   if(!pc||!qc)return 0;
   if(pc===qc)return 10000; // strongest: exact normalized identity, including SKU digits
@@ -5947,7 +5958,8 @@ function renderBillingSearch(){
   const box=document.getElementById("billing-search-results"); if(!box)return;
   const input=document.getElementById("billing-search");
   const raw=(input?.value||"").trim();
-  const q=billingVoiceNormalize(raw);
+  const voiceQty=billingVoiceExtractQuantity(raw);
+  const q=billingVoiceNormalize(voiceQty.text);
   if(q!==billingKeyboardSearchQuery){billingKeyboardSearchQuery=q;billingKeyboardSelectedIndex=-1;}
   const db=getItemDB();
   const stats=getBillingSalesStats();
@@ -5960,8 +5972,8 @@ function renderBillingSearch(){
     const name=String(x.name||'');
     const code=String(x.code||'');
     const scores=queries.map(v=>billingVoiceMatchScore(name,v));
-    const score=Math.max(...scores, billingVoiceMatchScore(name,code+' '+raw));
-    const nq=billingVoiceCompact(raw), nn=billingVoiceCompact(name);
+    const score=Math.max(...scores, billingVoiceMatchScore(name,code+' '+voiceQty.text));
+    const nq=billingVoiceCompact(voiceQty.text), nn=billingVoiceCompact(name);
     const exact=nn===nq;
     const prefix=nn.startsWith(nq);
     const sold=getBillingItemSoldQty(x,stats);
@@ -5975,10 +5987,10 @@ function renderBillingSearch(){
     return;
   }
   if(billingKeyboardSelectedIndex>=list.length) billingKeyboardSelectedIndex=list.length-1;
-  box.innerHTML=list.map((o,rank)=>'<div class="billing-result'+(rank===billingKeyboardSelectedIndex?' billing-kbd-selected':'')+'" data-billing-kbd-index="'+rank+'" data-billing-kbd-item-id="'+Number(o.x.id)+'" onclick="addDBItemToBilling('+Number(o.x.id)+')">'+
+  box.innerHTML=list.map((o,rank)=>'<div class="billing-result'+(rank===billingKeyboardSelectedIndex?' billing-kbd-selected':'')+'" data-billing-kbd-index="'+rank+'" data-billing-kbd-item-id="'+Number(o.x.id)+'" onclick="addDBItemToBilling('+Number(o.x.id)+','+Number(voiceQty.qty||1)+')">'+
     '<div class="billing-result-info"><div class="billing-result-name">'+escapeHtml(o.x.name)+(o.sold>0?'<span class="billing-result-rank">🔥 '+o.sold+' SOLD</span>':'')+
-    '</div><div class="billing-result-price">MRP '+moneyShort(o.x.mrp)+' • Rate '+moneyShort(o.x.rate)+'</div></div>'+
-    '<button onclick="event.stopPropagation();addDBItemToBilling('+Number(o.x.id)+')">ADD</button></div>').join("");
+    '</div><div class="billing-result-price">MRP '+moneyShort(o.x.mrp)+' • Rate '+moneyShort(o.x.rate)+(voiceQty.qty>1?' • Qty '+voiceQty.qty:'')+'</div></div>'+
+    '<button onclick="event.stopPropagation();addDBItemToBilling('+Number(o.x.id)+','+Number(voiceQty.qty||1)+')">ADD</button></div>').join("");
   const selected=box.querySelector('.billing-kbd-selected');
   if(selected) selected.scrollIntoView({block:'nearest'});
 }
@@ -6078,11 +6090,12 @@ function setBillingAddPosition(pos){
 function initBillingAddPosition(){
   setBillingAddPosition(getBillingAddPosition());
 }
-function addDBItemToBilling(id){
+function addDBItemToBilling(id,qty=1){
   const item=getItemDB().find(x=>Number(x.id)===Number(id)); if(!item)return;
+  const addQty=Math.max(1,parseInt(qty,10)||1);
   const existing=billingCart.find(x=>Number(x.id)===Number(id));
   if(existing) {
-    existing.qty=(Number(existing.qty)||0)+1;
+    existing.qty=(Number(existing.qty)||0)+addQty;
   } else {
     const newItem={id:item.id,code:item.code,name:invoiceStudioNormalizeItemName(item.name,item),mrp:Number(item.mrp)||0,rate:Number(item.rate)||0,purchase:Number(item.purchase)||0,qty:1,tax:Number(item.tax)||0,discountSelected:false,discountPercent:billingDiscountPercent};
     if(getBillingAddPosition()==="top") billingCart.unshift(newItem);
