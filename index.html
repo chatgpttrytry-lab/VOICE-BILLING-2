@@ -5401,7 +5401,29 @@ let billingKeyboardBound=false;
 function billingBarcodeText(v){return String(v??'').trim()}
 function billingBarcodeValue(item){return billingBarcodeText(item?.code||item?.barcode||item?.barCode||item?.sku||'')}
 function findBillingItemByExactBarcode(code){const n=billingBarcodeText(code).toLowerCase();if(!n)return null;return getItemDB().find(x=>billingBarcodeValue(x).toLowerCase()===n)||null}
-function clearBillingSearchOnly(keepFocus=true){const input=document.getElementById('billing-search');billingBarcodePendingNotFound='';billingBarcodeRapid=false;if(input){input.value='';renderBillingSearch();if(keepFocus)requestAnimationFrame(()=>{try{input.focus({preventScroll:true})}catch(e){try{input.focus()}catch(_){}}})}}
+function clearBillingSearchOnly(keepFocus=true){
+  // Clearing the search must also cancel any active/stale voice result. Otherwise
+  // Android SpeechRecognition can deliver a late onresult and put the old text back.
+  billingVoiceSessionId++;
+  if(billingVoiceRecognition){
+    try{billingVoiceRecognition.onresult=null;}catch(_){ }
+    try{billingVoiceRecognition.onerror=null;}catch(_){ }
+    try{billingVoiceRecognition.onend=null;}catch(_){ }
+    try{billingVoiceRecognition.stop();}catch(_){ }
+    billingVoiceRecognition=null;
+  }
+  billingVoiceButtonState(false);
+  billingBarcodePendingNotFound='';
+  billingBarcodeRapid=false;
+  billingVoiceSetStatus('');
+  const input=document.getElementById('billing-search');
+  if(input){
+    input.value='';
+    try{delete input.dataset.voiceAlternatives;}catch(_){input.dataset.voiceAlternatives='';}
+    renderBillingSearch();
+    if(keepFocus)requestAnimationFrame(()=>{try{input.focus({preventScroll:true})}catch(e){try{input.focus()}catch(_){}}});
+  }
+}
 let billingCameraStream=null;
 let billingCameraScanTimer=null;
 let billingCameraDetector=null;
@@ -5757,6 +5779,7 @@ function addNewItemFromBillingBarcode(){const code=billingBarcodeText(billingBar
 let billingVoiceRecognition=null;
 let billingVoiceListening=false;
 let billingVoiceRetry=0;
+let billingVoiceSessionId=0;
 function billingVoiceSetStatus(text,isListening=false){
   const el=document.getElementById('billing-voice-status');
   if(el){el.textContent=String(text||'');el.classList.toggle('listening',!!isListening);}
@@ -5778,7 +5801,9 @@ function billingVoiceCreateRecognition(SR,lang){
   r.maxAlternatives=3;
   r.lang=lang;
   r.onstart=()=>{billingVoiceRetry=0;billingVoiceButtonState(true);};
+  const voiceSessionId=++billingVoiceSessionId;
   r.onresult=(e)=>{
+    if(voiceSessionId!==billingVoiceSessionId)return;
     // Speech engines may return variants such as "Lipstick90", "Lipstick 90",
     // "Lipstick ninety" or "Lipstick nine zero". Keep the spoken text visible,
     // but let the Billing matcher normalize the words/numbers before ranking.
