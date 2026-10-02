@@ -4208,7 +4208,7 @@ window.addEventListener("load",()=>{updateRecycleCount();loadInvoiceDisplaySetti
 .billing-voice-btn{height:42px;width:42px;flex:0 0 42px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);font-size:18px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center}.billing-voice-btn:active{transform:scale(.97)}.billing-voice-btn.listening{background:#fee2e2;border-color:#ef4444;color:#b91c1c;animation:billingVoicePulse 1s ease-in-out infinite}@keyframes billingVoicePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.18)}50%{box-shadow:0 0 0 5px rgba(239,68,68,.12)}}.billing-voice-status{font-size:9px;font-weight:800;margin:2px 1px 7px;color:var(--muted);min-height:12px}.billing-voice-status.listening{color:#b91c1c}
 .db-search{flex:1;height:42px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);padding:0 11px;outline:0}
 .db-search:focus{border-color:var(--blue)}
-.billing-search-wrap{position:relative;flex:1;min-width:0}.billing-search-wrap .db-search{width:100%;padding-right:82px;transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease}.billing-search-wrap .db-search.barcode-scan-success{background:#dcfce7!important;border-color:#16a34a!important;color:#166534!important;box-shadow:0 0 0 2px rgba(22,163,74,.14)!important}.billing-search-wrap .db-search.barcode-scan-success::placeholder{color:#15803d!important}.billing-search-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;margin:0;padding:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:0;border-radius:9px;background:transparent;color:var(--muted);font-size:20px;line-height:1;font-weight:900;cursor:pointer;z-index:3}.billing-search-wrap{overflow:visible}.billing-search-clear{position:absolute!important;right:4px!important;top:50%!important;transform:translateY(-50%)!important;width:34px!important;height:34px!important;display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;z-index:20!important;background:var(--surface2)!important;color:var(--text)!important;border:1px solid var(--border)!important;border-radius:10px!important;font-size:22px!important;line-height:1!important;font-weight:900!important}.billing-search-clear:hover{background:var(--surface2);color:var(--text)}.billing-barcode-toggle{height:42px;min-width:92px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);font-weight:900;font-size:11px;padding:0 9px;cursor:pointer;white-space:nowrap}.billing-barcode-toggle.off{color:#d33b3b;border-color:rgba(211,59,59,.35)}.billing-barcode-toggle.on{color:#148a52;border-color:rgba(20,138,82,.45);background:rgba(20,138,82,.08)}.billing-barcode-status{font-size:9px;font-weight:900;margin:2px 1px 7px;color:var(--muted)}.billing-barcode-status.on{color:#148a52}.billing-barcode-not-found{border:1px solid rgba(211,59,59,.38);border-radius:12px;background:rgba(211,59,59,.06);padding:10px;margin-bottom:9px}.billing-barcode-not-found-title{font-size:12px;font-weight:900;color:#d33b3b}.billing-barcode-not-found-code{font-size:11px;font-weight:900;margin-top:4px;word-break:break-all}.billing-barcode-not-found-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.billing-barcode-not-found-actions button{height:36px;border:0;border-radius:9px;font-size:10px;font-weight:900}.billing-barcode-add{background:var(--blue);color:#fff}.billing-barcode-keyboard{background:var(--surface2);color:var(--blue)}
+.billing-search-wrap{position:relative;flex:1;min-width:0}.billing-search-wrap .db-search{width:100%;padding-right:46px;transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease}.billing-search-wrap .db-search.barcode-scan-success{background:#dcfce7!important;border-color:#16a34a!important;color:#166534!important;box-shadow:0 0 0 2px rgba(22,163,74,.14)!important}.billing-search-wrap .db-search.barcode-scan-success::placeholder{color:#15803d!important}.billing-search-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;margin:0;padding:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:0;border-radius:9px;background:transparent;color:var(--muted);font-size:20px;line-height:1;font-weight:900;cursor:pointer;z-index:3}.billing-search-wrap{overflow:hidden}.billing-search-clear:hover{background:var(--surface2);color:var(--text)}.billing-barcode-toggle{height:42px;min-width:92px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);font-weight:900;font-size:11px;padding:0 9px;cursor:pointer;white-space:nowrap}.billing-barcode-toggle.off{color:#d33b3b;border-color:rgba(211,59,59,.35)}.billing-barcode-toggle.on{color:#148a52;border-color:rgba(20,138,82,.45);background:rgba(20,138,82,.08)}.billing-barcode-status{font-size:9px;font-weight:900;margin:2px 1px 7px;color:var(--muted)}.billing-barcode-status.on{color:#148a52}.billing-barcode-not-found{border:1px solid rgba(211,59,59,.38);border-radius:12px;background:rgba(211,59,59,.06);padding:10px;margin-bottom:9px}.billing-barcode-not-found-title{font-size:12px;font-weight:900;color:#d33b3b}.billing-barcode-not-found-code{font-size:11px;font-weight:900;margin-top:4px;word-break:break-all}.billing-barcode-not-found-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.billing-barcode-not-found-actions button{height:36px;border:0;border-radius:9px;font-size:10px;font-weight:900}.billing-barcode-add{background:var(--blue);color:#fff}.billing-barcode-keyboard{background:var(--surface2);color:var(--blue)}
 .billing-payment-mode-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;align-items:center;margin:0 0 8px;padding:7px 8px;border:1px solid var(--border);border-radius:12px;background:var(--surface2)} .billing-payment-mode-label{grid-column:1/-1;font-size:9px;font-weight:900;white-space:nowrap;color:var(--muted)} .billing-mode-group{display:flex;gap:3px;align-items:stretch;min-width:0}.billing-mode-btn{flex:1;min-width:0;min-height:36px;border:1px solid var(--border);border-radius:9px;background:var(--surface);color:var(--text);font-size:10px;font-weight:850;padding:0 6px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .billing-mode-btn.active{border:2px solid var(--blue);background:rgba(22,119,255,.10);color:var(--text)} .billing-mode-btn:active,.billing-mode-edit-btn:active{transform:scale(.98)} .billing-mode-edit-btn{width:29px;min-width:29px;height:36px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--blue);font-size:11px;font-weight:900;padding:0;cursor:pointer}.billing-mode-edit-btn:hover{filter:brightness(.97)} @media(max-width:560px){.billing-payment-mode-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:7px 5px}.billing-payment-mode-label{grid-column:1/-1}.billing-mode-group{width:100%;min-width:0;gap:2px}.billing-mode-btn{min-height:38px;height:38px;font-size:9px;padding:0 2px;border-radius:8px}.billing-mode-edit-btn{width:22px;min-width:22px;height:38px;font-size:9px;border-radius:7px}}}
 
 .db-small-btn{height:42px;border:0;border-radius:12px;background:var(--blue2);color:var(--blue);font-weight:800;padding:0 11px}
@@ -4378,7 +4378,7 @@ window.addEventListener("load",()=>{updateRecycleCount();loadInvoiceDisplaySetti
     </div>
     <div class="db-billing-body">
       <div class="db-search-row">
-        <div class="billing-search-wrap"><input id="billing-search" class="db-search" placeholder="Search item / Scan Barcode" oninput="renderBillingSearch()" autocomplete="off" inputmode="search"><button id="billing-search-clear" class="billing-search-clear" type="button" onclick="event.preventDefault();event.stopPropagation();clearBillingSearchOnly(false)" aria-label="Clear search" title="Clear search">×</button></div>
+        <div class="billing-search-wrap"><input id="billing-search" class="db-search" placeholder="Search item / Scan Barcode" oninput="renderBillingSearch()" autocomplete="off" inputmode="search"><button id="billing-search-clear" class="billing-search-clear" type="button" onclick="clearBillingSearchOnly()" aria-label="Clear search">×</button></div>
         <button id="billing-camera-btn" class="billing-camera-btn" type="button" onclick="openBillingCameraScanner()" aria-label="Scan barcode with camera" title="Camera barcode scan">📷</button>
         <button id="billing-voice-btn" class="billing-voice-btn" type="button" onclick="toggleBillingVoiceSearch()" aria-label="Voice search" aria-pressed="false" title="Voice Search">🎤</button>
         <button id="billing-barcode-toggle" class="billing-barcode-toggle off" type="button" onclick="toggleBillingBarcodeMode()" aria-pressed="false">🔌 Barcode 🔴 OFF</button>
@@ -5401,29 +5401,7 @@ let billingKeyboardBound=false;
 function billingBarcodeText(v){return String(v??'').trim()}
 function billingBarcodeValue(item){return billingBarcodeText(item?.code||item?.barcode||item?.barCode||item?.sku||'')}
 function findBillingItemByExactBarcode(code){const n=billingBarcodeText(code).toLowerCase();if(!n)return null;return getItemDB().find(x=>billingBarcodeValue(x).toLowerCase()===n)||null}
-function clearBillingSearchOnly(keepFocus=true){
-  // Clearing the search must also cancel any active/stale voice result. Otherwise
-  // Android SpeechRecognition can deliver a late onresult and put the old text back.
-  billingVoiceSessionId++;
-  if(billingVoiceRecognition){
-    try{billingVoiceRecognition.onresult=null;}catch(_){ }
-    try{billingVoiceRecognition.onerror=null;}catch(_){ }
-    try{billingVoiceRecognition.onend=null;}catch(_){ }
-    try{billingVoiceRecognition.stop();}catch(_){ }
-    billingVoiceRecognition=null;
-  }
-  billingVoiceButtonState(false);
-  billingBarcodePendingNotFound='';
-  billingBarcodeRapid=false;
-  billingVoiceSetStatus('');
-  const input=document.getElementById('billing-search');
-  if(input){
-    input.value='';
-    try{delete input.dataset.voiceAlternatives;}catch(_){input.dataset.voiceAlternatives='';}
-    renderBillingSearch();
-    if(keepFocus)requestAnimationFrame(()=>{try{input.focus({preventScroll:true})}catch(e){try{input.focus()}catch(_){}}});
-  }
-}
+function clearBillingSearchOnly(keepFocus=true){const input=document.getElementById('billing-search');billingBarcodePendingNotFound='';billingBarcodeRapid=false;if(input){input.value='';renderBillingSearch();if(keepFocus)requestAnimationFrame(()=>{try{input.focus({preventScroll:true})}catch(e){try{input.focus()}catch(_){}}})}}
 let billingCameraStream=null;
 let billingCameraScanTimer=null;
 let billingCameraDetector=null;
@@ -5779,7 +5757,6 @@ function addNewItemFromBillingBarcode(){const code=billingBarcodeText(billingBar
 let billingVoiceRecognition=null;
 let billingVoiceListening=false;
 let billingVoiceRetry=0;
-let billingVoiceSessionId=0;
 function billingVoiceSetStatus(text,isListening=false){
   const el=document.getElementById('billing-voice-status');
   if(el){el.textContent=String(text||'');el.classList.toggle('listening',!!isListening);}
@@ -5801,37 +5778,36 @@ function billingVoiceCreateRecognition(SR,lang){
   r.maxAlternatives=3;
   r.lang=lang;
   r.onstart=()=>{billingVoiceRetry=0;billingVoiceButtonState(true);};
-  const voiceSessionId=++billingVoiceSessionId;
   r.onresult=(e)=>{
-    if(voiceSessionId!==billingVoiceSessionId)return;
-    // Speech engines may return variants such as "Lipstick90", "Lipstick 90",
-    // "Lipstick ninety" or "Lipstick nine zero". Keep the spoken text visible,
-    // but let the Billing matcher normalize the words/numbers before ranking.
-    const alternatives=[];
-    try{
-      const result=e?.results?.[0];
-      for(let i=0;i<(result?.length||0);i++){
-        const t=String(result?.[i]?.transcript||'').trim();
-        if(t && !alternatives.some(x=>x.toLowerCase()===t.toLowerCase())) alternatives.push(t);
-      }
-    }catch(_){}
-    const text=alternatives[0]||String(e?.results?.[0]?.[0]?.transcript||'').trim();
+    const text=String(e?.results?.[0]?.[0]?.transcript||'').trim();
     if(!text){billingVoiceSetStatus('No voice text detected. Tap 🎤 and try again.');return;}
     const input=document.getElementById('billing-search');
     if(!input)return;
-    input.value=text;
-    // Store all speech alternatives for the same search pass. This is useful
-    // for Indian pronunciation differences without changing the product name.
-    input.dataset.voiceAlternatives=JSON.stringify(alternatives);
     billingBarcodePendingNotFound='';
-    try{renderBillingSearch();}catch(err){console.error('Billing voice search render',err);}
-    // Voice Billing is an action: a clear product match is added immediately,
-    // then addDBItemToBilling clears and refocuses the search box for the next item.
-    if(billingVoiceAutoAdd(text)){
-      billingVoiceSetStatus('✓ Added: '+text+' • Ready for next item');
+
+    // Voice Billing: parse the spoken item and quantity, then use the existing
+    // billing cart logic. Manual typing/search/barcode flows are unchanged.
+    const voiceBill=billingVoiceParseBillingCommand(text);
+    if(voiceBill && voiceBill.itemQuery){
+      const match=billingVoiceFindBillingItem(voiceBill.itemQuery);
+      if(match){
+        billingVoiceAddBillingQuantity(match.id,voiceBill.qty);
+        input.value='';
+        renderBillingSearch();
+        billingVoiceSetStatus('✓ Added: '+match.name+' × '+voiceBill.qty);
+        try{input.focus({preventScroll:true});input.select();}catch(e){}
+        return;
+      }
+      // Keep the spoken text visible for normal search if the product is not found.
+      input.value=text;
+      try{renderBillingSearch();}catch(err){console.error('Billing voice search render',err);}
+      billingVoiceSetStatus('⚠ Product not found: '+voiceBill.itemQuery);
       return;
     }
-    try{input.focus({preventScroll:true});}catch(err){try{input.focus();}catch(_) {}}
+
+    input.value=text;
+    try{renderBillingSearch();}catch(err){console.error('Billing voice search render',err);}
+    // Do NOT focus the search field here: on Android this can reopen Gboard after voice input.
     billingVoiceSetStatus('✓ Voice: '+text);
   };
   r.onerror=(e)=>{
@@ -5889,189 +5865,202 @@ function toggleBillingVoiceSearch(){
   billingVoiceStartRecognition(SR,preferred);
 }
 
-/*
- * Voice Billing matcher
- * - Treats digits and spoken numbers as the same product token.
- * - "Lipstick90", "Lipstick 90", "Lipstick ninety" and "Lipstick nine zero"
- *   can therefore resolve to the same Item Database product.
- * - Exact normalized product identity always beats fuzzy/partial matches.
- * - Product names stored in Item Database are NEVER rewritten.
- */
-const billingVoiceNumberWords={
-  zero:'0',oh:'0',one:'1',two:'2',three:'3',four:'4',five:'5',six:'6',seven:'7',eight:'8',nine:'9',ten:'10',
-  eleven:'11',twelve:'12',thirteen:'13',fourteen:'14',fifteen:'15',sixteen:'16',seventeen:'17',eighteen:'18',nineteen:'19',
-  twenty:'20',thirty:'30',forty:'40',fifty:'50',sixty:'60',seventy:'70',eighty:'80',ninety:'90',hundred:'100'
-};
-function billingVoiceCleanText(v){
-  return String(v??'').toLowerCase().normalize('NFKD').replace(/[’']/g,'').replace(/[^a-z0-9\s.-]/g,' ').replace(/\s+/g,' ').trim();
-}
-function billingVoiceNumberWordText(v){
-  const a=billingVoiceCleanText(v).split(/\s+/).filter(Boolean),out=[];
-  const digitWord=w=>billingVoiceNumberWords[w]&&/^[0-9]$/.test(billingVoiceNumberWords[w]);
-  let i=0;
-  while(i<a.length){
-    const w=a[i], next=a[i+1];
-    // "six one" / "nine zero" -> 61 / 90.
-    if(next&&digitWord(w)&&digitWord(next)){out.push(billingVoiceNumberWords[w]+billingVoiceNumberWords[next]);i+=2;continue;}
-    // "sixty one" / "ninety nine" -> 61 / 99.
-    if(next&&/^(twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)$/.test(w)&&digitWord(next)){
-      out.push(String(Number(billingVoiceNumberWords[w])+Number(billingVoiceNumberWords[next])));i+=2;continue;
-    }
-    if(billingVoiceNumberWords[w]){out.push(billingVoiceNumberWords[w]);i++;continue;}
-    out.push(w);i++;
+function billingVoiceNumberWordsToDigits(value){
+  const ones={zero:'0',oh:'0',one:'1',two:'2',three:'3',four:'4',five:'5',six:'6',seven:'7',eight:'8',nine:'9'};
+  const tens={ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19,twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90};
+  const words=String(value||'').toLowerCase().replace(/[-]+/g,' ').split(/\s+/).filter(Boolean);
+  if(!words.length)return String(value||'');
+  let out=[],i=0;
+  while(i<words.length){
+    const w=words[i];
+    if(tens[w]!==undefined){let n=tens[w];if(i+1<words.length&&ones[words[i+1]]!==undefined){n+=Number(ones[words[i+1]]);i++;}out.push(String(n));}
+    else if(ones[w]!==undefined){let digits=ones[w];while(i+1<words.length&&ones[words[i+1]]!==undefined){digits+=ones[words[++i]];}out.push(digits);}
+    else out.push(w);
+    i++;
   }
   return out.join(' ');
 }
-function billingVoiceNormalize(v){
-  let s=billingVoiceCleanText(v);
-  // Join/split is handled both ways: "lipstick90" -> "lipstick 90", while
-  // compact comparison below also makes "lipstick 90" == "lipstick90".
-  s=s.replace(/([a-z])([0-9])/g,'$1 $2').replace(/([0-9])([a-z])/g,'$1 $2');
-  s=billingVoiceNumberWordText(s);
-  s=s.replace(/\b(?:pcs?|pieces?|piece|pc)\b/g,' ').replace(/\s+/g,' ').trim();
+function billingVoiceParseBillingCommand(value){
+  let raw=String(value||'').trim().replace(/[\u200B-\u200D\uFEFF]/g,'');
+  if(!raw)return null;
+
+  // Remove common voice-command prefixes without changing product names.
+  raw=raw.replace(/^(?:add|give|put|billing|bill|item|product)\s+/i,'').trim();
+
+  let qty=null, itemText=raw;
+  const numberPattern='(?:\\d+|zero|oh|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)(?:[-\\s]+(?:zero|oh|one|two|three|four|five|six|seven|eight|nine))?';
+
+  // Explicit unit forms are unambiguous: 2pc, 2 pcs, 2 piece(s).
+  let m=raw.match(new RegExp('(?:^|\\s)('+numberPattern+')\\s*(?:pc|pcs|piece|pieces)\\s*$','i'));
+  if(m){
+    qty=Number(billingVoiceNumberWordsToDigits(m[1]));
+    itemText=raw.slice(0,m.index).trim();
+  }else{
+    // Also accept a final spoken number as quantity: “Parachute sixty one two”.
+    // Bare final numbers are handled only when the remaining product text
+    // can be matched to an item. This keeps numeric product names such as
+    // “Parachute 61” / “Parachute sixty one” intact.
+    const singleNumberPattern='(?:\\d+|zero|oh|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)';
+    m=raw.match(new RegExp('(?:^|\\s)('+singleNumberPattern+')\\s*$','i'));
+    if(m){
+      const candidate=Number(billingVoiceNumberWordsToDigits(m[1]));
+      const possibleItem=raw.slice(0,m.index).trim();
+      const possibleMatch=possibleItem ? billingVoiceFindBillingItem(possibleItem) : null;
+      const possibleNorm=billingVoiceNormalizeSearch(possibleItem);
+      const possibleExact=!!possibleMatch && billingVoiceExactOrAliasMatch(possibleItem,possibleMatch);
+      if(Number.isFinite(candidate) && candidate>0 && possibleExact){
+        qty=candidate;
+        itemText=possibleItem;
+      }
+    }
+  }
+
+  if(qty===null)qty=1;
+  qty=Math.max(1,Math.min(999,Math.round(qty)));
+  itemText=itemText.replace(/\s+/g,' ').trim();
+  if(!itemText)return null;
+  return {itemQuery:itemText,qty};
+}
+
+function billingVoiceTokenNormalize(value){
+  return String(value||'').toLowerCase().normalize('NFKC').replace(/[\u200B-\u200D\uFEFF]/g,'').replace(/[^a-z0-9\u00c0-\uFFFF]+/gi,'');
+}
+function billingVoicePhonetic(value){
+  let s=billingVoiceTokenNormalize(value);
+  if(!s)return '';
+  // Conservative Indian/English speech confusions. Applied only for scoring;
+  // the real item name is never modified.
+  s=s.replace(/ph/g,'f').replace(/ck/g,'k').replace(/qu/g,'k').replace(/x/g,'ks');
+  s=s.replace(/oo/g,'u').replace(/ee/g,'i').replace(/ea/g,'i');
+  s=s.replace(/(.)\1+/g,'$1');
   return s;
 }
-function billingVoiceCompact(v){return billingVoiceNormalize(v).replace(/[^a-z0-9]/g,'');}
-function billingVoiceTokens(v){return billingVoiceNormalize(v).split(/\s+/).filter(Boolean);}
-function billingVoiceAliases(v){
-  let s=billingVoiceNormalize(v);
-  // Speech-only equivalences. These NEVER modify the Item Database name.
-  // They are used only for matching recognition variants to the stored name.
-  s=s.replace(/\bmamy\b/g,'mummy');
-  s=s.replace(/\bmummy\b/g,'mamy');
-  s=s.replace(/\blocks\b/g,'lux');
-  s=s.replace(/\bglow\b/g,'blue');
-  return s;
+function billingVoiceGetAliases(item){
+  const a=Array.isArray(item?.voiceAliases)?item.voiceAliases:[];
+  const rawName=String(item?.name||'').trim();
+  const name=billingVoiceTokenNormalize(rawName);
+  // Indian/English ASR corrections are tied to the canonical DB item.
+  // Numbered variants keep their numeric suffix: Lux349 -> locks349,
+  // MAMY349 -> mummy349, GlowLovely125 -> blue lovely125.
+  const builtIn=[];
+  const addRootAliases=(root,alts)=>{
+    if(!name.startsWith(root))return;
+    const suffix=rawName.slice(root.length).trim();
+    alts.forEach(v=>builtIn.push(String(v)+(suffix?' '+suffix:'')));
+  };
+  addRootAliases('lux',['locks','luks']);
+  addRootAliases('mamy',['mummy','mami']);
+  addRootAliases('glowlovely',['blue lovely','glow lovli','glow lovely']);
+  return [...a,...builtIn].map(v=>String(v||'').trim()).filter(Boolean);
 }
-function billingVoiceSpeechVariants(v){
-  const base=billingVoiceNormalize(v), out=[];
-  const add=x=>{x=String(x||'').trim();if(x&&!out.some(y=>y===x))out.push(x)};
-  add(base);
-  add(base.replace(/\bmummy\b/g,'mamy'));
-  add(base.replace(/\bmamy\b/g,'mummy'));
-  add(base.replace(/\blocks\b/g,'lux'));
-  add(base.replace(/\blux\b/g,'locks'));
-  add(base.replace(/\bblue\b/g,'glow'));
-  add(base.replace(/\bglow\b/g,'blue'));
-  return out;
+function billingVoiceExactOrAliasMatch(query,item){
+  if(!item)return false;
+  const nq=billingVoiceNormalizeSearch(query);
+  if(!nq)return false;
+  const fields=[String(item.name||''),String(item.code||''),...billingVoiceGetAliases(item)];
+  return fields.some(field=>billingVoiceNormalizeSearch(field)===nq);
 }
-function billingVoiceQuantityWordValue(v){
-  const w=String(v||'').trim().toLowerCase();
-  if(/^\d+$/.test(w))return Math.max(1,parseInt(w,10)||1);
-  const map={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19,twenty:20,thirty:30,forty:40,fifty:50};
-  return map[w]||0;
-}
-function billingVoiceExtractQuantity(v){
-  const raw=billingVoiceCleanText(v);
-  let text=raw, qty=1;
-  // Quantity BEFORE the product: "2pc Lux", "two pieces Lakme 350", "one piece Parachute sixty one".
-  let m=text.match(/^(?:qty|quantity)\s*(\d+)\s*(?:pcs?|pieces?|piece)\s+(.+)$/i);
-  if(m)return {text:m[2].trim(),qty:Math.max(1,parseInt(m[1],10)||1)};
-  m=text.match(/^(\d+)\s*(?:pcs?|pieces?|piece)\s+(.+)$/i);
-  if(m)return {text:m[2].trim(),qty:Math.max(1,parseInt(m[1],10)||1)};
-  m=text.match(/^(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty)\s*(?:pcs?|pieces?|piece)\s+(.+)$/i);
-  if(m)return {text:m[2].trim(),qty:billingVoiceQuantityWordValue(m[1])};
-  // Quantity AFTER the product: "Lakme 350 2pc", "Parachute sixty one one piece".
-  m=text.match(/^(.+?)\s+(\d+)\s*(?:pcs?|pieces?|piece)\s*$/i);
-  if(m)return {text:m[1].trim(),qty:Math.max(1,parseInt(m[2],10)||1)};
-  m=text.match(/^(.+?)\s+(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty)\s*(?:pcs?|pieces?|piece)\s*$/i);
-  if(m)return {text:m[1].trim(),qty:billingVoiceQuantityWordValue(m[2])};
-  m=text.match(/^(.+?)\s+(?:qty|quantity)\s*(\d+)\s*$/i);
-  if(m)return {text:m[1].trim(),qty:Math.max(1,parseInt(m[2],10)||1)};
-  return {text,qty};
-}
-function billingVoiceMatchScore(productName,query){
-  const pn=billingVoiceNormalize(productName), qn=billingVoiceNormalize(query);
-  const rawQ=billingVoiceExtractQuantity(query).text;
-  const pa=billingVoiceNormalize(productName), qa=billingVoiceNormalize(rawQ);
-  const pc=billingVoiceCompact(pa), qc=billingVoiceCompact(qa);
-  // Exact stored spelling always wins. Speech aliases are a fallback only.
-  if(pc===qc)return 12000;
-  const aliasQueries=billingVoiceSpeechVariants(rawQ).filter(x=>billingVoiceCompact(x)!==qc);
-  let aliasBest=0;
-  for(const aq of aliasQueries){
-    const ap=billingVoiceAliases(productName), ac=billingVoiceCompact(ap), aqa=billingVoiceAliases(aq), aqc=billingVoiceCompact(aqa);
-    if(ac&&aqc&&ac===aqc)aliasBest=Math.max(aliasBest,10800);
-    else if(ac&&aqc&&ac.startsWith(aqc))aliasBest=Math.max(aliasBest,820);
+function billingVoiceMatchScore(query,item){
+  const raw=String(query||'').trim();
+  const nq=billingVoiceNormalizeSearch(raw);
+  if(!nq||!item)return 0;
+  const fields=[String(item.name||''),String(item.code||''),...billingVoiceGetAliases(item)];
+  let best=0;
+  for(const field of fields){
+    const nf=billingVoiceNormalizeSearch(field);
+    if(!nf)continue;
+    const exact=nf===nq;
+    const prefix=nf.startsWith(nq)||nq.startsWith(nf);
+    const contains=nf.includes(nq)||nq.includes(nf);
+    if(exact) best=Math.max(best, field===String(item.name||'')?100:110);
+    else if(prefix) best=Math.max(best,86);
+    else if(contains) best=Math.max(best,72);
+    const pf=billingVoicePhonetic(field), pq=billingVoicePhonetic(raw);
+    if(pf&&pq&&(pf===pq))best=Math.max(best,92);
+    else if(pf&&pq&&(pf.startsWith(pq)||pq.startsWith(pf)))best=Math.max(best,78);
+    else if(pf&&pq&&billingVoiceFuzzyMatch(field,raw)>=1)best=Math.max(best,64);
   }
-  if(!pc||!qc)return 0;
-  if(aliasBest>=10800)return aliasBest;
-  const pt=pa.split(/\s+/).filter(Boolean), qt=qa.split(/\s+/).filter(Boolean);
-  const pSet=new Set(pt), qSet=new Set(qt);
-  const common=qt.filter(t=>pSet.has(t)).length;
-  const allTokens=qt.length;
-  let score=(common/Math.max(allTokens,1))*600;
-  if(pc.startsWith(qc))score+=450;
-  if(qc.startsWith(pc))score+=400;
-  if(pc.includes(qc))score+=180;
-  // Numeric identity is important: "Lipstick 90" must not fall back to
-  // another Lipstick product just because "lipstick" is a common prefix.
-  const qNums=(qa.match(/\d+/g)||[]);
-  const pNums=(pa.match(/\d+/g)||[]);
-  if(qNums.length){
-    if(qNums.join('|')===pNums.join('|'))score+=2500;
-    else if(pNums.length)score-=2500;
-    else score-=700;
-  }
-  // Prevent "Lipstick 90" from selecting "Lipstick 9" / "Lipstick".
-  if(qNums.length && pNums.length && qNums.join('')!==pNums.join(''))score-=5000;
-  if(pa===qa)score+=3000;
-  if(pa.startsWith(qa))score+=700;
-  return Math.max(score,aliasBest);
+  return best;
 }
-function billingVoiceGetQueries(raw){
-  const out=[String(raw||'').trim()];
-  try{
-    const a=JSON.parse(document.getElementById('billing-search')?.dataset.voiceAlternatives||'[]');
-    if(Array.isArray(a))a.forEach(x=>{x=String(x||'').trim();if(x&&!out.some(y=>y.toLowerCase()===x.toLowerCase()))out.push(x);});
-  }catch(_){}
-  return out;
-}
-function billingVoiceAutoAdd(raw){
-  const input=document.getElementById('billing-search');
-  if(!input || String(input.value||'').trim()!==String(raw||'').trim())return false;
-  const voiceQty=billingVoiceExtractQuantity(raw);
-  const q=billingVoiceNormalize(voiceQty.text);
-  if(!q)return false;
+function billingVoiceFindBillingItem(query){
   const db=getItemDB();
-  let best=null;
-  for(const x of db){
-    const exact=billingVoiceCompact(x.name)===billingVoiceCompact(voiceQty.text);
-    const score=billingVoiceMatchScore(x.name,voiceQty.text);
-    if(!best || score>best.score)best={x,score,exact};
+  const raw=String(query||'').trim();
+  const nq=billingVoiceNormalizeSearch(raw);
+  if(!nq)return null;
+  let ranked=[];
+  db.forEach((x,i)=>{
+    const score=billingVoiceMatchScore(raw,x);
+    if(score>0)ranked.push({x,score,i});
+  });
+  ranked.sort((a,b)=>(b.score-a.score)||(a.i-b.i));
+  // Require a strong match. For phonetic/fuzzy matches, an exact or alias
+  // match at a materially higher score wins; ambiguous weak matches are left
+  // for the normal search box instead of billing the wrong product.
+  const top=ranked[0], second=ranked[1];
+  if(!top || top.score<64)return null;
+  if(second && top.score<86 && (top.score-second.score)<8)return null;
+  return {...top.x,_voiceIndex:top.i,_voiceScore:top.score};
+}
+
+function billingVoiceAddBillingQuantity(id,qty){
+  const item=getItemDB().find(x=>Number(x.id)===Number(id));
+  if(!item)return false;
+  const count=Math.max(1,Math.min(999,Math.round(Number(qty)||1)));
+  const existing=billingCart.find(x=>Number(x.id)===Number(id));
+  if(existing){
+    existing.qty=(Number(existing.qty)||0)+count;
+  }else{
+    const newItem={id:item.id,code:item.code,name:invoiceStudioNormalizeItemName(item.name,item),mrp:Number(item.mrp)||0,rate:Number(item.rate)||0,purchase:Number(item.purchase)||0,qty:count,tax:Number(item.tax)||0,discountSelected:false,discountPercent:billingDiscountPercent};
+    if(getBillingAddPosition()==='top')billingCart.unshift(newItem);
+    else billingCart.push(newItem);
   }
-  // Auto-add only when identity is clear; ordinary typed search is untouched.
-  if(!best || (!best.exact && best.score<10800))return false;
-  addDBItemToBilling(best.x.id,voiceQty.qty);
+  saveBillingCart();
+  renderBillingCart();
+  if(document.getElementById('billing-camera-overlay')?.classList.contains('open'))billingCameraUpdateCartSummary();
+  const b=document.getElementById('billing-overlay');
+  if(b && !b.classList.contains('open'))openBilling();
   return true;
 }
 
+function billingVoiceNormalizeSearch(value){
+  const spoken=billingVoiceNumberWordsToDigits(value);
+  return billingVoiceTokenNormalize(spoken);
+}
+function billingVoiceFuzzyMatch(text,query){
+  const t=billingVoiceNormalizeSearch(text), q=billingVoiceNormalizeSearch(query);
+  if(!q)return 0;if(t===q)return 3;if(t.startsWith(q))return 2;if(t.includes(q))return 1;
+  let qi=0;for(let i=0;i<t.length&&qi<q.length;i++)if(t[i]===q[qi])qi++;return qi===q.length?0.5:0;
+}
 function renderBillingSearch(){
   const box=document.getElementById("billing-search-results"); if(!box)return;
   const input=document.getElementById("billing-search");
   const raw=(input?.value||"").trim();
-  const voiceQty=billingVoiceExtractQuantity(raw);
-  const q=billingVoiceNormalize(voiceQty.text);
+  const q=raw.toLowerCase();
+  const normalizedQ=billingVoiceNormalizeSearch(raw);
   if(q!==billingKeyboardSearchQuery){billingKeyboardSearchQuery=q;billingKeyboardSelectedIndex=-1;}
   const db=getItemDB();
   const stats=getBillingSalesStats();
 
   if(billingBarcodeMode && billingBarcodePendingNotFound && raw===billingBarcodePendingNotFound){renderBillingBarcodeNotFound(raw);return;}
-  if(!q){box.innerHTML="";return;}
 
-  const queries=billingVoiceGetQueries(raw).map(billingVoiceNormalize).filter(Boolean);
+  // Keep the billing window clean when the search box is empty.
+  // Top Selling Items are intentionally removed from the billing window.
+  if(!q){
+    box.innerHTML="";
+    return;
+  }
+
   let list=db.map((x,i)=>{
-    const name=String(x.name||'');
-    const code=String(x.code||'');
-    const scores=queries.map(v=>billingVoiceMatchScore(name,v));
-    const score=Math.max(...scores, billingVoiceMatchScore(name,code+' '+voiceQty.text));
-    const nq=billingVoiceCompact(voiceQty.text), nn=billingVoiceCompact(name);
-    const exact=nn===nq;
-    const prefix=nn.startsWith(nq);
-    const sold=getBillingItemSoldQty(x,stats);
-    return {x,sold,i,score,exact,prefix};
-  }).filter(o=>o.score>0)
-    .sort((a,b)=>(b.score-a.score)||(b.exact-a.exact)||(b.prefix-a.prefix)||(b.sold-a.sold)||(a.i-b.i))
+      const name=String(x.name||''), code=String(x.code||'');
+      const nl=name.toLowerCase(), cl=code.toLowerCase();
+      const exact=nl===q || cl===q;
+      const normalizedExact=billingVoiceNormalizeSearch(name)===normalizedQ || billingVoiceNormalizeSearch(code)===normalizedQ;
+      const prefix=billingVoiceFuzzyMatch(name,raw)>=2 || billingVoiceFuzzyMatch(code,raw)>=2;
+      const fuzzy=Math.max(billingVoiceFuzzyMatch(name,raw),billingVoiceFuzzyMatch(code,raw));
+      return {x,sold:getBillingItemSoldQty(x,stats),i,exact,normalizedExact,prefix,fuzzy};
+    })
+    .filter(o=>o.exact||o.normalizedExact||o.fuzzy>0)
+    .sort((a,b)=>(b.exact-a.exact)||(b.normalizedExact-a.normalizedExact)||(b.prefix-a.prefix)||(b.fuzzy-a.fuzzy)||(b.sold-a.sold)||(a.i-b.i))
     .slice(0,20);
 
   if(!list.length){
@@ -6079,10 +6068,10 @@ function renderBillingSearch(){
     return;
   }
   if(billingKeyboardSelectedIndex>=list.length) billingKeyboardSelectedIndex=list.length-1;
-  box.innerHTML=list.map((o,rank)=>'<div class="billing-result'+(rank===billingKeyboardSelectedIndex?' billing-kbd-selected':'')+'" data-billing-kbd-index="'+rank+'" data-billing-kbd-item-id="'+Number(o.x.id)+'" onclick="addDBItemToBilling('+Number(o.x.id)+','+Number(voiceQty.qty||1)+')">'+
+  box.innerHTML=list.map((o,rank)=>'<div class="billing-result'+(rank===billingKeyboardSelectedIndex?' billing-kbd-selected':'')+'" data-billing-kbd-index="'+rank+'" data-billing-kbd-item-id="'+Number(o.x.id)+'" onclick="addDBItemToBilling('+Number(o.x.id)+')">'+
     '<div class="billing-result-info"><div class="billing-result-name">'+escapeHtml(o.x.name)+(o.sold>0?'<span class="billing-result-rank">🔥 '+o.sold+' SOLD</span>':'')+
-    '</div><div class="billing-result-price">MRP '+moneyShort(o.x.mrp)+' • Rate '+moneyShort(o.x.rate)+(voiceQty.qty>1?' • Qty '+voiceQty.qty:'')+'</div></div>'+
-    '<button onclick="event.stopPropagation();addDBItemToBilling('+Number(o.x.id)+','+Number(voiceQty.qty||1)+')">ADD</button></div>').join("");
+    '</div><div class="billing-result-price">MRP '+moneyShort(o.x.mrp)+' • Rate '+moneyShort(o.x.rate)+'</div></div>'+
+    '<button onclick="event.stopPropagation();addDBItemToBilling('+Number(o.x.id)+')">ADD</button></div>').join("");
   const selected=box.querySelector('.billing-kbd-selected');
   if(selected) selected.scrollIntoView({block:'nearest'});
 }
@@ -6182,14 +6171,13 @@ function setBillingAddPosition(pos){
 function initBillingAddPosition(){
   setBillingAddPosition(getBillingAddPosition());
 }
-function addDBItemToBilling(id,qty=1){
+function addDBItemToBilling(id){
   const item=getItemDB().find(x=>Number(x.id)===Number(id)); if(!item)return;
-  const addQty=Math.max(1,parseInt(qty,10)||1);
   const existing=billingCart.find(x=>Number(x.id)===Number(id));
   if(existing) {
-    existing.qty=(Number(existing.qty)||0)+addQty;
+    existing.qty=(Number(existing.qty)||0)+1;
   } else {
-    const newItem={id:item.id,code:item.code,name:invoiceStudioNormalizeItemName(item.name,item),mrp:Number(item.mrp)||0,rate:Number(item.rate)||0,purchase:Number(item.purchase)||0,qty:addQty,tax:Number(item.tax)||0,discountSelected:false,discountPercent:billingDiscountPercent};
+    const newItem={id:item.id,code:item.code,name:invoiceStudioNormalizeItemName(item.name,item),mrp:Number(item.mrp)||0,rate:Number(item.rate)||0,purchase:Number(item.purchase)||0,qty:1,tax:Number(item.tax)||0,discountSelected:false,discountPercent:billingDiscountPercent};
     if(getBillingAddPosition()==="top") billingCart.unshift(newItem);
     else billingCart.push(newItem);
   }
